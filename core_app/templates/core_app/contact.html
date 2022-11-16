@@ -1,0 +1,84 @@
+{% extends "core_app/base.html" %}
+{% load static %}
+{% block title %}KaArya Properties{% endblock %}
+
+{% block content %}
+	<div class="fh5co-page-title" style="background-image: url({% static 'images/slide_6.jpg' %});">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 animate-box">
+					<h1><span class="colored">Contact</span> Us</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="fh5co-contact animate-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3">
+					<h3>Contact Info.</h3>
+					<ul class="contact-info">
+						<li><i class="icon-map"></i>B-309, 3rd Floor, Epic Complex, Kesnand Phata, Wagholi, 412207 </li>
+						<li><i class="icon-phone"></i> 9921092622/7519133133</li>
+						<li><i class="icon-envelope"></i><a href="#">kaaryarealestate@gmail.com</a></li>
+						<li><i class="icon-globe"></i><a href="#">www.kaaryarealestate.com</a></li>
+					</ul>
+				</div>
+				<div class="col-md-8 col-md-push-1 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<input class="form-control" placeholder="Name" type="text" id="user_name_id">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<input class="form-control" placeholder="Email" type="text" id="user_email_id">
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<textarea name="" class="form-control" cols="30" rows="7" placeholder="Message" id="user_msg_id"></textarea>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<input value="Send Message" class="btn btn-primary" type="button" id="submit_contact">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+
+	<div id="map" class="animate-box" data-animate-effect="fadeIn"></div>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script type="text/javascript">
+
+	$('#submit_contact').click(function(){
+        var name = $('#user_name_id').val();
+        var email = $('#user_email_id').val();
+        var msg = $('#user_msg_id').val();
+
+        console.log(name, "name", email, "email", msg)
+        $.ajax(
+        {
+            type:"POST",
+            url: "/contact_us",
+            data:{
+              name: name,
+              csrfmiddlewaretoken: '{{ csrf_token }}'
+            },
+            success: function(data)
+            {
+
+            }
+        })
+      });
+	</script>
+{% endblock %}
