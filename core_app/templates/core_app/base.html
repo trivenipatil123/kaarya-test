@@ -54,15 +54,23 @@
 					<h1><a href="{% url 'index' %}">KaArya Properties<span></span></a></h1>
 					<nav role="navigation">
 						<ul>
-							<li><a href="{% url 'buy_property' %}">Buy</a></li>
-<!--							<li><a href="{% url 'contact_us' %}">Sell</a></li>-->
-							<li><a href="{% url 'rent_property' %}">Rent</a></li>
-							<li><a href="{% url 'all_properties' %}">Services</a></li>
-							<li class="call"><a href="tel://123456789"><i class="icon-phone"></i> 9921092622/7519133133</a></li>
+							<li class="call"><i class="icon-phone"></i><a href="tel://9921092622"> 9921092622</a>/<a href="tel://7519133133">7519133133</a></li>
 							<li class="cta"><a href="{% url 'contact_us' %}">Contact us</a></li>
 						</ul>
 					</nav>
 				</div>
+
+				<div class="header-inner">
+					<nav role="navigation">
+						<ul>
+							<li><a href="{% url 'buy_property' %}">Buy</a></li>
+<!--							<li><a href="{% url 'contact_us' %}">Sell</a></li>-->
+							<li><a href="{% url 'rent_property' %}">Rent</a></li>
+							<li><a href="{% url 'all_properties' %}">Services</a></li>
+						</ul>
+					</nav>
+				</div>
+
 			</div>
 		</div>
 	</header>
