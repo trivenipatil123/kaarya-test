@@ -21,7 +21,7 @@
 					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
 				</div>
 
-				{% for property in properties %}
+				{% for property in page_obj.object_list %}
 				<div class="col-md-4 item-block animate-box" data-animate-effect="fadeIn">
 					<div class="fh5co-property">
 						<figure>
@@ -57,25 +57,28 @@
 				<div class="col-md-12 text-center animate-box" data-animate-effect="fadeIn">
 					<nav>
 					  <ul class="pagination">
-					    <li class="disabled">
-					      <a href="#" aria-label="Previous">
+						{% if page_obj.has_previous %}
+					    <li>
+					      <a href="?page={{page_obj.previous_page_number}}" aria-label="Previous">
 					        <span aria-hidden="true">&laquo;</span>
 					      </a>
 					    </li>
-					    <li class="active"><a href="#">1</a></li>
-					    <li><a href="#">2</a></li>
-					    <li><a href="#">3</a></li>
-					    <li><a href="#">4</a></li>
-					    <li><a href="#">5</a></li>
+						 {% endif %}
+						 {% for i in no_of_pages %}
+					    <li class="{% if i == page_obj.number %}active{% endif %}"><a href="?page={{i}}">{{i}}</a></li>
+						 {% endfor %}
+						{% if page_obj.has_next %}
 					    <li>
-					      <a href="#" aria-label="Next">
+					      <a href="?page={{page_obj.next_page_number}}" aria-label="Next">
 					        <span aria-hidden="true">&raquo;</span>
 					      </a>
 					    </li>
+						{% endif %}
 					  </ul>
 					</nav>
 				</div>
 			</div>
+
 		</div>
 	</div>
 

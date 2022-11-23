@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from django.core.paginator import Paginator
 from core_app import constants
 from core_app.models import Property
 
@@ -13,7 +13,11 @@ def index(request):
 def buy_property_view(request):
     print('Request for Buy property page received')
     properties = Property.objects.filter(property_for=constants.BUY)
-    return render(request, 'core_app/buy.html', {"properties": properties})
+    paginator = Paginator(properties, 6)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'core_app/buy.html', {"properties": properties, "page_obj": page_obj,
+                                                 "no_of_pages": range(1, paginator.num_pages+1)})
 
 
 def sell_property_view(request):
@@ -24,7 +28,11 @@ def sell_property_view(request):
 def rent_property_view(request):
     print('Request for Rent property page received')
     properties = Property.objects.filter(property_for=constants.RENT)
-    return render(request, 'core_app/rent.html', {"properties": properties})
+    paginator = Paginator(properties, 6)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'core_app/rent.html', {"properties": properties, "page_obj": page_obj,
+                                                  "no_of_pages": range(1, paginator.num_pages+1)})
 
 
 def all_properties_view(request):
