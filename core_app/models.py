@@ -31,7 +31,7 @@ class Property(models.Model):
     rera_id = models.CharField(max_length=30, blank=True, null=True)
     lifts = models.IntegerField(default=0)
     parking = models.BooleanField(default=False)
-    property_contact = models.CharField(max_length=10, blank=True, null=True)
+    property_contact = models.CharField(max_length=15, blank=True, null=True)
     status = models.CharField(choices=PROPERTY_STATUS, default=OPEN, max_length=10)
     posted_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
