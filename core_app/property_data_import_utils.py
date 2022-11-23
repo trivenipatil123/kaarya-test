@@ -13,13 +13,26 @@ def import_property_data():
                       'type_of_ownership', 'age_of_construction', 'builder', 'rera_id', 'lifts', 'parking', 'property_contact']
 
     for row in range(1, dataframe1.max_row):
-        # property_record = Property.objects.create()
-        i = 0
+        i, property_dict = 0, {}
         for col in dataframe1.iter_cols(1, dataframe1.max_column):
-            print(col[row].value, "======", property_field[i])
-            property_field[i] = col[row].value
+            if property_field[i] == 'parking' and not col[row].value:
+                property_dict[property_field[i]] = False
+            elif (property_field[i] == 'floor' or property_field[i] == 'no_of_floor' or property_field[i] == 'lifts' or
+                  property_field[i] == 'no_of_balcony') and not col[row].value:
+                property_dict[property_field[i]] = 0
+            elif (property_field[i] == 'no_of_bed' or property_field[i] == 'no_of_bath') and not col[row].value:
+                property_dict[property_field[i]] = 1
+            elif property_field[i] == 'property_for' and not col[row].value:
+                property_dict[property_field[i]] = 'buy'
+            elif property_field[i] == 'property_type' and not col[row].value:
+                property_dict[property_field[i]] = 'new'
+            elif property_field[i] == 'furniture_type' and not col[row].value:
+                property_dict[property_field[i]] = 'unfurnished'
+            else:
+                property_dict[property_field[i]] = col[row].value
             i += 1
-        # property_record.save()
+        print(property_dict, )
+        property_record = Property(**property_dict)
+        property_record.save()
+        print(property_record)
 
-
-import_property_data()
