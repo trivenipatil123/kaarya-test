@@ -5,9 +5,9 @@ from core_app.models import Property
 
 
 def index(request):
-    print('Request for index page received')
+    properties_slider = Property.objects.filter(property_for=constants.BUY)[:3]
     properties = Property.objects.all()[:3]
-    return render(request, 'core_app/index.html', {})
+    return render(request, 'core_app/index.html', {"properties_slider": properties_slider, "properties": properties})
 
 
 def buy_property_view(request):

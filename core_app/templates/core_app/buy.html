@@ -33,7 +33,7 @@
 							<div class="price-status">
 		                 		<span class="price">Rs. {{property.price}} </span>
 		               		</div>
-		               		<p>Details: {{ property.long_desc }} </p>
+		               		<p>Location: {{ property.location }} </br>{{ property.furniture_type }}</p>
 	            		</div>
 	            	<p class="fh5co-property-specification">
 	            		<span><strong>{{ property.carper_area }}</strong> Sq Ft</span>
@@ -43,7 +43,7 @@
 	            	</p>
 					<p class="fh5co-property-specification">
 						<span><strong><a href="tel://{{ property.property_contact }}"><button type="button" class="btn btn-success"><i class="fa fa-phone"></i></button></a></strong></span>
-						<span><strong><button type="button" class="btn btn-success"><i class="fa fa-comment"></i></button></strong></span>
+						<span><strong><a href="https://api.whatsapp.com/send?phone={{ property.property_contact }}&text=Hello"><button type="button" class="btn btn-success"><i class="fa fa-whatsapp"></i></button></a></strong></span>
 					</p>
 					</div>
 				</div>

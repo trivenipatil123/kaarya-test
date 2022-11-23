@@ -6,74 +6,32 @@
 	<aside id="fh5co-hero" clsas="js-fullheight">
 		<div class="flexslider js-fullheight">
 			<ul class="slides">
+			{% for property in properties_slider %}
 		   	<li style="background-image: url({% static 'images/slide_1.jpg' %});">
 		   		<div class="container">
 		   			<div class="col-md-12 text-center js-fullheight fh5co-property-brief slider-text">
 		   				<div class="fh5co-property-brief-inner">
 		   					<div class="fh5co-box">
-		   						
-		   						<h3><a href="#">Villa In Hialeah, Dade County</a></h3>
-		   						<div class="price-status">
-                             	<span class="price">$540,000 <a href="#" class="tag">For Sale</a></span>
-	                        </div>
-	                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque dicta magni amet atque doloremque velit unde adipisci omnis hic quaerat.</p>
-
-	                        <p class="fh5co-property-specification">
-                        		<span><strong>3500</strong> Sq Ft</span>  <span><strong>3</strong> Beds</span>  <span><strong>3.5</strong> Baths</span>  <span><strong>2</strong> Garages</span>
-                        	</p>
-
-	                        <p><a href="#" class="btn btn-primary">Learn more</a></p>
-									
-	                        
+		   						<h3><a href="#">{{property.short_desc}}</a></h3>
+								<div class="price-status">
+									<span class="price">Rs. {{property.price}} <a href="" class="tag">{{ property.property_type|capfirst }}</a></span>
+								</div>
+								<p>Location: {{ property.location }}</br>{{ property.furniture_type }}</p>
+								<p class="fh5co-property-specification">
+									<span><strong>{{ property.carper_area }}</strong> Sq Ft</span>  <span><strong>{{ property.no_of_bed }}</strong> Beds</span>  <span><strong>{{ property.no_of_bath }}</strong> Baths</span>  <span><strong>{{ property.no_of_balcony }}</strong> Balcony</span>
+								</p>
+	                        	<p><a href="{% url 'buy_property' %}" class="btn btn-primary">Learn more</a></p>
 	   						</div>
 		   				</div>
 		   			</div>
-		   		</div>
+				</div>
 		   	</li>
-		   	<li style="background-image: url({% static 'images/slide_2.jpg' %});">
-		   		<div class="container">
-		   			<div class="col-md-12 text-center js-fullheight fh5co-property-brief slider-text">
-		   				<div class="fh5co-property-brief-inner">
-		   					<div class="fh5co-box">
-		   						<h3><a href="#">15 Apartments Of Type B</a></h3>
-		   						<div class="price-status">
-                             	<span class="price">$2,200<span class="per">/Month</span> <a href="#" class="tag">For Rent</a></span>
-	                        </div>
-	                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque dicta magni amet atque doloremque velit unde adipisci omnis hic quaerat.</p>
-	                        <p class="fh5co-property-specification">
-                        		<span><strong>3500</strong> Sq Ft</span>  <span><strong>3</strong> Beds</span>  <span><strong>3.5</strong> Baths</span>  <span><strong>2</strong> Garages</span>
-                        	</p>
-	                        <p><a href="#" class="btn btn-primary">Learn more</a></p>
-	   						</div>
-		   				</div>
-		   			</div>
-		   		</div>
-		   	</li>
-				<li style="background-image: url({% static 'images/slide_3.jpg' %});">
-		   		<div class="container">
-		   			<div class="col-md-12 text-center js-fullheight fh5co-property-brief slider-text">
-		   				<div class="fh5co-property-brief-inner">
-		   					<div class="fh5co-box">
-		   						<h3><a href="#">401 Biscayne Boulevard, Miami</a></h3>
-		   						<div class="price-status">
-                             	<span class="price">$1,540,000 <a href="#" class="tag">For Sale</a></span>
-	                        </div>
-	                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque dicta magni amet atque doloremque velit unde adipisci omnis hic quaerat.</p>
-	                        <p class="fh5co-property-specification">
-                        		<span><strong>3500</strong> Sq Ft</span>  <span><strong>3</strong> Beds</span>  <span><strong>3.5</strong> Baths</span>  <span><strong>2</strong> Garages</span>
-                        	</p>
-	                        <p><a href="#" class="btn btn-primary">Learn more</a></p>
-
-
-	   						</div>
-		   				</div>
-		   			</div>
-		   		</div>
-		   	</li>
-		   	
+			{% endfor %}
 		  	</ul>
 	  	</div>
 	</aside>
+
+
 	<div id="best-deal">
 		<div class="container">
 			<div class="row">
@@ -81,69 +39,30 @@
 					<h2>We are Offering the Best Real Estate Deals</h2>
 					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
 				</div>
-				<div class="col-md-4 item-block animate-box" data-animate-effect="fadeIn">
-
-
-					<div class="fh5co-property">
-						<figure>
-							<img src="{% static 'images/slide_3.jpg' %}" alt="Free Website Templates FreeHTML5.co" class="img-responsive">
-							<a href="#" class="tag">For Sale</a>
-						</figure>
-						<div class="fh5co-property-innter">
-							<h3><a href="#">Villa In Hialeah, Dade County</a></h3>
-							<div class="price-status">
-		                 	<span class="price">$540,000 </span>
-		               </div>
-		               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque dicta magni amet atque doloremque velit unde adipisci omnis hic quaerat.</p>
-	            	</div>
-	            	<p class="fh5co-property-specification">
-	            		<span><strong>3500</strong> Sq Ft</span>  <span><strong>3</strong> Beds</span>  <span><strong>3.5</strong> Baths</span>  <span><strong>2</strong> Garages</span>
-	            	</p>
+				{% for property in properties %}
+					<div class="col-md-4 item-block animate-box" data-animate-effect="fadeIn">
+						<div class="fh5co-property">
+							<figure>
+								{% if property.property_image.first.image %}
+								<img src="{{property.property_image.first.image}}" alt="" class="img-responsive" style="height:70%">
+								{% else %}
+								<img src="{% static 'images/image_1.jpg' %}" alt="" class="img-responsive" style="height:70%">
+								{% endif %}
+								<a href="#" class="tag">For {{ property.property_for|capfirst }}</a>
+							</figure>
+							<div class="fh5co-property-innter">
+								<h3><a href="#">{{property.short_desc}}</a></h3>
+								<div class="price-status">
+									<span class="price">Rs. {{property.price}} </span>
+								</div>
+								<p>Location: {{ property.location }}</br>{{ property.furniture_type }}</p>
+							</div>
+							<p class="fh5co-property-specification">
+								<span><strong>{{ property.carper_area }}</strong> Sq Ft</span>  <span><strong>{{ property.no_of_bed }}</strong> Beds</span>  <span><strong>{{ property.no_of_bath }}</strong> Baths</span>  <span><strong>{{ property.no_of_balcony }}</strong> Balcony</span>
+							</p>
+						</div>
 					</div>
-
-					
-				</div>
-				<div class="col-md-4 item-block animate-box" data-animate-effect="fadeIn">
-
-					<div class="fh5co-property">
-						<figure>
-							<img src="{% static 'images/slide_2.jpg' %}" alt="Free Website Templates FreeHTML5.co" class="img-responsive">
-							<a href="#" class="tag">For Rent</a>
-						</figure>
-						<div class="fh5co-property-innter">
-							<h3><a href="#">15 Apartments Of Type B</a></h3>
-							<div class="price-status">
-		                 	<span class="price">$2,000<span class="per">/month</span> </span>
-		               </div>
-		               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque dicta magni amet atque doloremque velit unde adipisci omnis hic quaerat.</p>
-	            	</div>
-	            	<p class="fh5co-property-specification">
-	            		<span><strong>3500</strong> Sq Ft</span>  <span><strong>3</strong> Beds</span>  <span><strong>3.5</strong> Baths</span>  <span><strong>2</strong> Garages</span>
-	            	</p>
-					</div>
-					
-				</div>
-				<div class="col-md-4 item-block animate-box" data-animate-effect="fadeIn">
-
-					<div class="fh5co-property">
-						<figure>
-							<img src="{% static 'images/slide_1.jpg' %}" alt="Free Website Templates FreeHTML5.co" class="img-responsive">
-							<a href="#" class="tag">For Sale</a>
-						</figure>
-						<div class="fh5co-property-innter">
-							<h3><a href="#">401 Biscayne Boulevard, Miami</a></h3>
-							<div class="price-status">
-		                 	<span class="price">$1,540,000</span>
-		               </div>
-		               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque dicta magni amet atque doloremque velit unde adipisci omnis hic quaerat.</p>
-	            	</div>
-	            	<p class="fh5co-property-specification">
-	            		<span><strong>3500</strong> Sq Ft</span>  <span><strong>3</strong> Beds</span>  <span><strong>3.5</strong> Baths</span>  <span><strong>2</strong> Garages</span>
-	            	</p>
-					</div>
-				</div>
-
-
+				{% endfor %}
 			</div>
 		</div>
 	</div>

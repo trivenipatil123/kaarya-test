@@ -26,7 +26,11 @@
 				<div class="col-md-4 item-block animate-box" data-animate-effect="fadeIn">
 					<div class="fh5co-property">
 						<figure>
-							<img src="{% static 'images/slide_2.jpg' %}" alt="" class="img-responsive">
+							{% if property.property_image.first.image %}
+							<img src="{{property.property_image.first.image}}" alt="" class="img-responsive" style="height:70%">
+							{% else %}
+							<img src="{% static 'images/image_1.jpg' %}" alt="" class="img-responsive" style="height:70%">
+							{% endif %}
 							<a href="#" class="tag">Rent</a>
 						</figure>
 						<div class="fh5co-property-innter">
@@ -34,14 +38,14 @@
 							<div class="price-status">
 		                 		<span class="price">Rs. {{property.price}} </span>
 		               		</div>
-		               		<p>Details: {{ property.long_desc }} {{property.property_image.first}}</p>
+		               		<p>Location: {{ property.location }}</br>{{ property.furniture_type }}</p>
 	            		</div>
 	            	<p class="fh5co-property-specification">
 	            		<span><strong>{{ property.carper_area }}</strong> Sq Ft</span>  <span><strong>{{ property.no_of_bed }}</strong> Beds</span>  <span><strong>{{ property.no_of_bath }}</strong> Baths</span>  <span><strong>{{ property.no_of_balcony }}</strong> Balcony</span>
 	            	</p>
 					<p class="fh5co-property-specification">
 						<span><strong><a href="tel://{{ property.property_contact }}"><button type="button" class="btn btn-success"><i class="fa fa-phone"></i></button></a></strong></span>
-						<span><strong><button type="button" class="btn btn-success"><i class="fa fa-comment"></i></button></strong></span>
+						<span><strong><a href="https://api.whatsapp.com/send?phone={{ property.property_contact }}&text=Hello"><button type="button" class="btn btn-success"><i class="fa fa-whatsapp"></i></button></a></strong></span>
 					</p>
 					</div>
 				</div>
